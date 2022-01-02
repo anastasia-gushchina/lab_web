@@ -8,22 +8,31 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const net = __importStar(require("net"));
+const fs = __importStar(require("fs"));
 const PORT = 3000;
 const IP = '127.0.0.1';
 const BACKLOG = 100;
+const dir = "C:/Users/Stasya/source/repos/lab_web/src";
 net.createServer()
     .listen(PORT, IP, BACKLOG)
     .on('connection', socket => socket
     .on('data', buffer => {
-    const request = buffer.toString();
-    socket.write(compileResponse({
-        protocol: 'HTTP/1.1',
-        headers: new Map(),
-        status: 'OK',
-        statusCode: 200,
-        body: `<html><body><h1>Greetings</h1></body></html>`
-    }));
-    socket.end();
+    fs.readFile(dir + "/main.html", (err, data) => {
+        const page = data.toString();
+        const request = buffer.toString();
+        if (request == "okbutton=OK") {
+            var map = document.getElementsByName('map');
+        }
+        else
+            socket.write(compileResponse({
+                protocol: 'HTTP/1.1',
+                headers: new Map(),
+                status: 'OK',
+                statusCode: 200,
+                body: page
+            }));
+        socket.end();
+    });
 }));
 const compileResponse = (r) => `${r.protocol} ${r.statusCode} ${r.status}
 ${Array.from(r.headers).map(kv => `${kv[0]}: 

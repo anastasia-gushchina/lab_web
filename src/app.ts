@@ -1,22 +1,36 @@
 import * as net from 'net'
+import * as fs from 'fs'
+
+import { getParsedCommandLineOfConfigFile } from 'typescript'
 const PORT = 3000
 const IP = '127.0.0.1'
 const BACKLOG = 100
+const dir = "C:/Users/Stasya/source/repos/lab_web/src"
+
 net.createServer()
   .listen(PORT, IP, BACKLOG)
   .on('connection', socket => socket
     .on('data',buffer =>{
+		fs.readFile(dir+"/main.html",(err:NodeJS.ErrnoException, data:Buffer)=>{
+		const page = data.toString()
 		const request = buffer.toString()
+		if(request =="okbutton=OK"){
+			var map = document.getElementsByName('map');
+			
+		}
+		else
 		socket.write(compileResponse({
 			protocol: 'HTTP/1.1',
 			headers: new Map(),
 			status: 'OK',
 			statusCode: 200,
-			body: `<html><body><h1>Greetings</h1></body></html>`})
+			body: page})
 		)
 		socket.end()
 		})
+	})
   )
+  
  export interface Response {
   status: string
   statusCode: number
