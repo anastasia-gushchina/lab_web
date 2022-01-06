@@ -1,19 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Raleway:wght@300&display=swap');
 .btn-outline-success{
+    background-color: rgb(255, 132, 132);
+    color: white;
+    border-color: rgb(231, 118, 118);
+    }
+.btn-outline-success:hover,
+.btn-outline-success:focus,
+.btn-outline-success:visited{
+    background-color: rgb(255, 64, 64);
+    color: white;
+    border-color: rgb(231, 118, 118);
+    }
+    
+[data-objectId]:hover {
+  color: rgb(255, 132, 132);
+  cursor: pointer;
+}
 
-    background-color: rgb(255, 137, 137);
+.navbar-collapse{
+  text-align: right;
+}
+.nav-item{
+    font-size: 1.3em !important;
+}
+.nav li{
+padding-right:50px;
+}
+#nav-text{
+    font-size: 2.5em;
+    font-family: 'Parisienne', cursive;
+   
     
-    color: white;
-    
-    }
-    
-    .btn-outline-success:hover,
-    
-    .btn-outline-success:focus,
-    
-    .btn-outline-success:visited{
-    
-    background-color: rgb(247, 64, 64);
-    
-    color: white;
-    
-    }
+}
+.list-group{
+  background-color: cadetblue;
+}
+
+.list-group-item li{
+background-color: rgb(255, 132, 132);
+flood-color: pink;
+stop-color: aliceblue;
+border-color: brown;
+}
+*{
+    font-family: 'Raleway', sans-serif;
+}
