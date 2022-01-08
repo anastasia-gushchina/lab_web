@@ -2,19 +2,21 @@
 .btn-outline-success{
     background-color: rgb(255, 132, 132);
     color: white;
-    border-color: rgb(231, 118, 118);
+    border-color: rgb(255, 132, 132);
     }
 .btn-outline-success:hover,
 .btn-outline-success:focus,
 .btn-outline-success:visited{
     background-color: rgb(255, 64, 64);
     color: white;
-    border-color: rgb(231, 118, 118);
+    border-color: rgb(255, 64, 64);
     }
     
-[data-objectId]:hover {
-  color: rgb(255, 132, 132);
-  cursor: pointer;
+
+a,a:visited, a:focus,a:hover{
+  text-decoration: none;
+  color: black;
+  accent-color: black;
 }
 
 .navbar-collapse{
@@ -23,25 +25,31 @@
 .nav-item{
     font-size: 1.3em !important;
 }
-.nav li{
-padding-right:50px;
-}
+
 #nav-text{
     font-size: 2.5em;
     font-family: 'Parisienne', cursive;
-   
+  vertical-align:bottom;
     
 }
-.list-group{
-  background-color: cadetblue;
+[data-objectId]:hover {
+  color: rgb(255, 64, 64);
+  cursor: pointer;
 }
-
-.list-group-item li{
-background-color: rgb(255, 132, 132);
-flood-color: pink;
-stop-color: aliceblue;
-border-color: brown;
+.list-group-item.active:hover {
+  background-color: rgb(255, 132, 132) !important;
+  border-color: rgb(255, 132, 132) !important;
+}
+.list-group-item.active,
+.list-group-item.active:hover {
+  background-color: rgb(255, 132, 132) !important;
+  border-color: rgb(255, 132, 132) !important;
+}
+.card{
+  width:18rem;
+  margin:5px;
 }
 *{
     font-family: 'Raleway', sans-serif;
 }
+
