@@ -21,7 +21,7 @@ net.createServer()
 				headers: new Map(),
 				status: 'OK',
 				statusCode: 200,
-				body: "Hello"
+				body: '<html><body><h1>Greetings</h1></body></html>'
 			})
 			);
 			/*if(request.url.includes("icons")){

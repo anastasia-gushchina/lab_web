@@ -21,58 +21,58 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">
-            <img class ="align-baseline" src="../icons/hair-dryer.png" height="62">
-              <span  id=nav-text >Hair&Catalina</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link"  href="/services">Услуги</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/masters">Мастера</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/salons">Салоны</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" me-auto href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="../icons/lk.png" width = "30">
-                </a>
-                <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Войти</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class=nav-link href="https://www.instagram.com/hair_catalina/">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img class="align-baseline" src="../icons/hair-dryer.png" height="62">
+          <span id=nav-text>Hair&Catalina</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/services">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/masters">Мастера</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/salons">Салоны</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" me-auto href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../icons/lk.png" width="30">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Войти</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class=nav-link href="https://www.instagram.com/hair_catalina/">
                 <img src="../icons/inst.png" width="30">
               </a>
-              </li>
-              <li class="nav-item">
-                <a class=nav-link href="https://vk.com/hair_catalina_kirov">
+            </li>
+            <li class="nav-item">
+              <a class=nav-link href="https://vk.com/hair_catalina_kirov">
                 <img src="../icons/vk.png" width="30">
               </a>
-              </li>
-              
-            </ul>
-          </div>
+            </li>
+
+          </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
   <!-- 1. Создаем Яндекс карту -->
   <div class="container-fluid">
@@ -168,38 +168,73 @@
 
           <li class="list-group-item active" data-objectid="1">г. Киров, ул. Молодой Гвардии, 26</li>
           <li class="list-group-item" data-objectid="2">г. Киров, ул. Горького 55а</li>
-          <div class="align-self-center" >
+          <div class="align-self-center">
             <div class="p-4 ">
               <form method="GET" action="salon_choose">
                 <button class="btn btn-outline-success align-center" margin="5" type="submit" name="submit_salon">
-                Выбрать этот салон >> 
+                  Выбрать этот салон >>
                 </button>
               </form>
-          </div>
+            </div>
           </div>
         </div>
-        
+
       </div>
     </div>
-  
 
-  <div class="row  g-5">
-    <button class="btn btn-outline-success" >AaA</button>
+
+    <div class="row  g-5">
+      <button class="btn btn-outline-success">AaA</button>
+    </div>
   </div>
-</div>
 
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
-  <div class="container-fluid p-5">
-    <div>
-      <div class="text-center">
-        © 2021 Copyright:
-        <a class="text-reset fw-bold" href="/">chto-to.ru</a>
+
+  <!-- Модальное окно -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Сообщить об ошибке</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">@*</span>
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email"
+              aria-describedby="addon-wrapping">
+          </div>
+
+          <div class="row py-2">
+          <div class="input-group">
+            <textarea class="form-control" placeholder="Опишите свою проблему"></textarea>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-outline-success">Отправить</button>
+        </div>
       </div>
     </div>
   </div>
-</footer>
-<!-- Footer -->
+  <!-- Footer -->
+  <footer class="text-center text-lg-start bg-light text-muted">
+    <div class="container-fluid p-3">
+      <div class="row">
+        <div class="col px-lg-5">
+          <a id="help" href="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: lightgray;">
+            Обратиться в поддержку
+          </a>
+        </div>
+        <div class="col text-end">
+          © 2021 Copyright:
+          <a class="text-reset fw-bold" href="/">chto-to.ru</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer -->
 </body>
 
 </html>
