@@ -9,10 +9,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const net = __importStar(require("net"));
 const fs = __importStar(require("fs"));
+const sql = __importStar(require("mysql2"));
 const PORT = 3000;
 const IP = '127.0.0.1';
 const BACKLOG = 100;
-const dir = "C:/Users/Stasya/source/repos/lab_web/src/";
+const dir = "/";
+const connection = sql.createConnection({
+    host: "localhost",
+    user: "root",
+    database: "catalina",
+    password: "123"
+});
+connection.connect(function (err) {
+    if (err) {
+        return console.error("Ошибка: " + err.message);
+    }
+    else {
+        console.log("Подключение к серверу MySQL успешно установлено");
+    }
+});
 net.createServer()
     .listen(PORT, IP, BACKLOG)
     .on('connection', socket => {
@@ -25,7 +40,7 @@ net.createServer()
             headers: new Map(),
             status: 'OK',
             statusCode: 200,
-            body: '<html><body><h1>Greetings</h1></body></html>'
+            body: '<html><body>' + getData() + '</body></html>'
         }));
         /*if(request.url.includes("icons")){
             sendFile(request.url.substring(9),socket);
@@ -38,6 +53,17 @@ net.createServer()
         socket.end();
     });
 });
+function getData() {
+    var result = {};
+    const sql = 'SELECT * FROM users';
+    connection.query(sql, function (err, results) {
+        if (err)
+            console.log(err);
+        console.log(results);
+        result = results;
+    });
+    return result[0]['login'];
+}
 function sendFile(path, socket) {
     fs.readFile(dir + path, (err, data) => {
         if (data != undefined) {

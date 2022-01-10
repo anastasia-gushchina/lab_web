@@ -1,12 +1,26 @@
 import * as net from 'net'
-import * as fs from 'fs'
+import * as sql from 'mysql2'
 
 import { getParsedCommandLineOfConfigFile } from 'typescript'
 const PORT = 3000
 const IP = '127.0.0.1'
 const BACKLOG = 100
-const dir = "C:/Users/Stasya/source/repos/lab_web/src/"
+const dir = "/"
 
+const connection = sql.createConnection({
+	host: "localhost",
+	user: "root",
+	database: "catalina",
+	password: "123"
+  });
+  connection.connect(function(err){
+    if (err) {
+      return console.error("Ошибка: " + err.message);
+    }
+    else{
+      console.log("Подключение к серверу MySQL успешно установлено");
+    }
+ });
 
 net.createServer()
 	.listen(PORT, IP, BACKLOG)
@@ -21,43 +35,26 @@ net.createServer()
 				headers: new Map(),
 				status: 'OK',
 				statusCode: 200,
-				body: '<html><body><h1>Greetings</h1></body></html>'
+				body: '<html><body>'+getData()+'</body></html>'
 			})
 			);
-			/*if(request.url.includes("icons")){
-				sendFile(request.url.substring(9),socket);
-			}
-			else{
-				sendFile("main.html",socket);
-				
-			}*/
-			//socket.pipe(socket);
 			socket.end();
 		})
 		
 		
 		}	
 	)
-	
-function sendFile(path:string, socket: net.Socket){
-	fs.readFile(dir + path, (err: NodeJS.ErrnoException, data: Buffer) => {
-		
-		if(data!=undefined){
-		const page = data.toString();
-		
-			socket.write(compileResponse({
-				protocol: 'HTTP/1.1',
-				headers: new Map(),
-				status: 'OK',
-				statusCode: 200,
-				body: page
-			})
-			);
-			console.log(path);
-		}
-		
-		
-	})
+
+function getData(){
+var result={};
+	const sql = 'SELECT * FROM users';
+	connection.query(sql,function(err, results) {
+		if(err) console.log(err);
+		console.log(results);
+		result = results;
+	});
+
+return result[0];
 }
 export interface Request {
 	protocol: string
