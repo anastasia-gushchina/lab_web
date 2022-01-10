@@ -1,26 +1,19 @@
 import * as net from 'net'
-import * as sql from 'mysql2'
+const mysql = require('mysql2/promise');
 
 import { getParsedCommandLineOfConfigFile } from 'typescript'
 const PORT = 3000
 const IP = '127.0.0.1'
 const BACKLOG = 100
-const dir = "/"
 
-const connection = sql.createConnection({
+
+const config = {
 	host: "localhost",
 	user: "root",
 	database: "catalina",
 	password: "123"
-  });
-  connection.connect(function(err){
-    if (err) {
-      return console.error("Ошибка: " + err.message);
-    }
-    else{
-      console.log("Подключение к серверу MySQL успешно установлено");
-    }
- });
+  };
+  
 
 net.createServer()
 	.listen(PORT, IP, BACKLOG)
@@ -35,27 +28,31 @@ net.createServer()
 				headers: new Map(),
 				status: 'OK',
 				statusCode: 200,
-				body: '<html><body>'+getData()+'</body></html>'
+				body: '<html><body>'+f()+'</body></html>'
 			})
 			);
+			
 			socket.end();
 		})
 		
 		
 		}	
 	)
-
-function getData(){
-var result={};
-	const sql = 'SELECT * FROM users';
-	connection.query(sql,function(err, results) {
-		if(err) console.log(err);
-		console.log(results);
-		result = results;
-	});
-
-return result[0];
+async function get() {
+	const conn = await mysql.createConnection(config);
+	const [rows, fields]= await conn.execute('SELECT * FROM users');
+	console.log(rows);
+	conn.end();
+	return rows;
 }
+	
+	
+	async function f()  {
+		let a = await get();
+		console.log(a);
+	};
+	
+
 export interface Request {
 	protocol: string
 	method: string

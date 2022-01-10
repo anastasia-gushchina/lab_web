@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -8,26 +17,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const net = __importStar(require("net"));
-const fs = __importStar(require("fs"));
-const sql = __importStar(require("mysql2"));
+const mysql = require('mysql2/promise');
 const PORT = 3000;
 const IP = '127.0.0.1';
 const BACKLOG = 100;
-const dir = "/";
-const connection = sql.createConnection({
+const config = {
     host: "localhost",
     user: "root",
     database: "catalina",
     password: "123"
-});
-connection.connect(function (err) {
-    if (err) {
-        return console.error("Ошибка: " + err.message);
-    }
-    else {
-        console.log("Подключение к серверу MySQL успешно установлено");
-    }
-});
+};
 net.createServer()
     .listen(PORT, IP, BACKLOG)
     .on('connection', socket => {
@@ -40,45 +39,27 @@ net.createServer()
             headers: new Map(),
             status: 'OK',
             statusCode: 200,
-            body: '<html><body>' + getData() + '</body></html>'
+            body: '<html><body>' + f() + '</body></html>'
         }));
-        /*if(request.url.includes("icons")){
-            sendFile(request.url.substring(9),socket);
-        }
-        else{
-            sendFile("main.html",socket);
-            
-        }*/
-        //socket.pipe(socket);
         socket.end();
     });
 });
-function getData() {
-    var result = {};
-    const sql = 'SELECT * FROM users';
-    connection.query(sql, function (err, results) {
-        if (err)
-            console.log(err);
-        console.log(results);
-        result = results;
-    });
-    return result[0]['login'];
-}
-function sendFile(path, socket) {
-    fs.readFile(dir + path, (err, data) => {
-        if (data != undefined) {
-            const page = data.toString();
-            socket.write(compileResponse({
-                protocol: 'HTTP/1.1',
-                headers: new Map(),
-                status: 'OK',
-                statusCode: 200,
-                body: page
-            }));
-            console.log(path);
-        }
+function get() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const conn = yield mysql.createConnection(config);
+        const [rows, fields] = yield conn.execute('SELECT * FROM users');
+        console.log(rows);
+        conn.end();
+        return rows;
     });
 }
+function f() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let a = yield get();
+        console.log(a);
+    });
+}
+;
 const parseRequest = (s) => {
     const [firstLine, rest] = divideStringOn(s, '\r\n');
     const [method, url, protocol] = firstLine.split(' ', 3);
