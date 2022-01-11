@@ -50,12 +50,7 @@
                                 <img src="icons/lk.png" width="30">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Войти</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#enter">Войти</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -82,7 +77,6 @@
                         <img src="imgs/card1.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title align-self-center">Оформление причёски</h5>
-                            <p class="card-text">Текст-описание</p>
                         </div>
                     </div>
                 </a>
@@ -93,7 +87,6 @@
                         <img src="imgs/card2.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Уходовые процедуры</h5>
-                            <p class="card-text">Текст-описание</p>
                         </div>
                     </a>
                 </div>
@@ -104,7 +97,6 @@
                         <img src="imgs/card3.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Окрашивание</h5>
-                            <p class="card-text">Текст-описание</p>
                         </div>
                     </a>
                 </div>
@@ -115,7 +107,6 @@
                         <img src="imgs/card4.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Стрижка</h5>
-                            <p class="card-text">Текст-описание</p>
                         </div>
                     </a>
                 </div>
@@ -126,7 +117,6 @@
                         <img src="imgs/card5.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title align-center">Макияж</h5>
-                            <p class="card-text">Текст-описание</p>
                         </div>
                     </a>
                 </div>
@@ -137,21 +127,78 @@
                         <img src="imgs/card6.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Создание образа</h5>
-                            <p class="card-text">Текст-описание</p>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
+<!-- Модальное окно -->
+<div class="modal fade" id="enter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Войти/Зарегистрироваться</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+  
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">@*</span>
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email"
+              aria-describedby="addon-wrapping">
+          </div>
+  
+          <div class="row py-2">
+            <div class="input-group flex-nowrap">
+              <input type="text" class="form-control" placeholder="Password" aria-label="Password"
+                aria-describedby="addon-wrapping">
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-outline-success">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Модальное окно -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Сообщить об ошибке</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
 
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">@*</span>
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email"
+              aria-describedby="addon-wrapping">
+          </div>
 
+          <div class="row py-2">
+          <div class="input-group">
+            <textarea class="form-control" placeholder="Опишите свою проблему"></textarea>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-outline-success">Отправить</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Footer -->
   <footer class="text-center text-lg-start bg-light text-muted">
     <div class="container-fluid p-3">
       <div class="row">
         <div class="col px-lg-5">
-          <a id="help" href="#" style="color: lightgray;">
+            <a id="help" href="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: rgb(119, 119, 119);">
             Обратиться в поддержку
           </a>
         </div>
