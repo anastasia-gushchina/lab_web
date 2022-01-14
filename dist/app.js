@@ -39,7 +39,7 @@ net.createServer()
             headers: new Map(),
             status: 'OK',
             statusCode: 200,
-            body: '<html><body>' + f() + '</body></html>'
+            body: f()
         }));
         socket.end();
     });
@@ -47,17 +47,15 @@ net.createServer()
 function get() {
     return __awaiter(this, void 0, void 0, function* () {
         const conn = yield mysql.createConnection(config);
-        const [rows, fields] = yield conn.execute('SELECT * FROM users');
+        const [rows, fields] = yield conn.execute('SELECT * FROM user');
         console.log(rows);
         conn.end();
         return rows;
     });
 }
 function f() {
-    return __awaiter(this, void 0, void 0, function* () {
-        let a = yield get();
-        console.log(a);
-    });
+    let a = get();
+    return JSON.stringify(a).toString();
 }
 ;
 const parseRequest = (s) => {

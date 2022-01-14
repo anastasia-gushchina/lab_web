@@ -28,7 +28,7 @@ net.createServer()
 				headers: new Map(),
 				status: 'OK',
 				statusCode: 200,
-				body: '<html><body>'+f()+'</body></html>'
+				body: f()
 			})
 			);
 			
@@ -40,16 +40,16 @@ net.createServer()
 	)
 async function get() {
 	const conn = await mysql.createConnection(config);
-	const [rows, fields]= await conn.execute('SELECT * FROM users');
+	const [rows, fields]= await conn.execute('SELECT * FROM user');
 	console.log(rows);
 	conn.end();
 	return rows;
 }
 	
 	
-	async function f()  {
-		let a = await get();
-		console.log(a);
+	function f()  {
+		let a = get();
+		return JSON.stringify(a).toString();
 	};
 	
 

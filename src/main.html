@@ -28,12 +28,13 @@
           <img class="align-baseline" src="icons/hair-dryer.png" height="62">
           <span id=nav-text>Hair&Catalina</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-4" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse  order-lg-1 order-5" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto  mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="/services">Услуги</a>
             </li>
@@ -43,28 +44,42 @@
             <li class="nav-item">
               <a class="nav-link" href="/salons">Салоны</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" me-auto href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="icons/lk.png" width="30">
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#enter">Войти</a></li>
-              </ul>
-            </li>
             <li class="nav-item">
-              <a class=nav-link href="https://www.instagram.com/hair_catalina/">
-                <img src="icons/inst.png" width="30">
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class=nav-link href="https://vk.com/hair_catalina_kirov">
-                <img src="icons/vk.png" width="30">
+              <a class="nav-link " me href="#enter" id="nav_enter" role="button" data-bs-toggle="modal"
+                aria-expanded="false">
+                Войти
               </a>
             </li>
 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" me href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Имя
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Настройки</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
+
+        <ul class="navbar-nav order-2 ms-auto">
+          <div class="container-fluid ">
+            <div class="row g-0">
+              <li class="nav-item col">
+                <a class=nav-link href="https://www.instagram.com/hair_catalina/">
+                  <img class="icons" src="icons/inst.png">
+                </a>
+              </li>
+              <li class="nav-item col">
+                <a class=nav-link href="https://vk.com/hair_catalina_kirov">
+                  <img class="icons" src="icons/vk.png">
+                </a>
+              </li>
+            </div>
+          </div>
+        </ul>
+
       </div>
     </nav>
   </header>
@@ -75,30 +90,31 @@
         <div class="carousel-item active">
           <div class="container-fluid">
             <div class="row">
-              <img src="imgs/1.jpg" class="d-block col-3">
-              <img src="imgs/2.jpg" class="d-block col-3">
-              <img src="imgs/3.jpg" class="d-block col-3">
-              <img src="imgs/4.jpg" class="d-block col-3">
+
+              <img src="imgs/1.jpg" class="d-block col-md-4 col-sm-12 col-lg-3">
+              <img src="imgs/2.jpg" class="d-none d-md-block col-md-4 col-lg-3">
+              <img src="imgs/3.jpg" class="d-none d-md-block col-md-4 col-lg-3">
+              <img src="imgs/4.jpg" class="d-none d-lg-block col-lg-3">
             </div>
           </div>
         </div>
         <div class="carousel-item">
           <div class="container-fluid">
             <div class="row">
-              <img src="imgs/5.jpg" class="d-block col-3">
-              <img src="imgs/6.jpg" class="d-block col-3">
-              <img src="imgs/7.jpg" class="d-block col-3">
-              <img src="imgs/8.jpg" class="d-block col-3">
+              <img src="imgs/5.jpg" class="d-block col-md-4 col-sm-12 col-lg-3">
+              <img src="imgs/6.jpg" class="d-none d-md-block col-md-4 col-lg-3">
+              <img src="imgs/7.jpg" class="d-none d-md-block col-md-4 col-lg-3">
+              <img src="imgs/8.jpg" class="d-none d-lg-block col-lg-3">
             </div>
           </div>
         </div>
         <div class="carousel-item">
           <div class="container-fluid">
             <div class="row">
-              <img src="imgs/9.jpg" class="d-block col-3">
-              <img src="imgs/10.jpg" class="d-block col-3">
-              <img src="imgs/11.jpg" class="d-block col-3">
-              <img src="imgs/12.jpg" class="d-block col-3">
+              <img src="imgs/9.jpg" class="d-block col-md-4 col-sm-12 col-lg-3">
+              <img src="imgs/10.jpg" class="d-none d-md-block col-md-4 col-lg-3">
+              <img src="imgs/11.jpg" class="d-none d-md-block col-md-4 col-lg-3">
+              <img src="imgs/12.jpg" class="d-none d-lg-block col-lg-3">
             </div>
           </div>
         </div>
@@ -167,66 +183,105 @@
 
   </div>
 
-<!-- Модальное окно -->
-<div class="modal fade" id="enter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Войти/Зарегистрироваться</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-      </div>
-      <div class="modal-body">
+  <!-- Модальное окно -->
+  <div class="modal fade" id="enter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">@*</span>
-          <input type="text" class="form-control" placeholder="Email" aria-label="Email"
-            aria-describedby="addon-wrapping">
+        <div class="modal-body">
+          <ul class="nav nav-tabs">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="enter-tab" data-bs-toggle="pill" data-bs-target="#enter-panel"
+                type="button" role="tab" aria-controls="enter-pills" aria-selected="true">Войти</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="sign-tab" data-bs-toggle="pill" data-bs-target="#sign-panel" type="button"
+                role="tab" aria-controls="sign-pills" aria-selected="false">Зарегистрироваться</button>
+            </li>
+
+          </ul>
+          <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="enter-panel" role="tabpanel" aria-labelledby="enter-tab">
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput" id="label_email">Email/Номер телефона</label>
+              </div>
+
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword" id="label_password">Пароль</label>
+              </div>
+              <div class="text-start" id="pass_warning">
+              </div>
+              <a class="text-start" href="#">
+                Восстановить пароль
+              </a>
+              <div class="row p-3">
+              <button type="button" class="btn btn-outline-success" onclick="autorization()">Войти</button>
+            </div>
+            </div>
+            <div class="tab-pane" id="sign-panel" role="tabpanel" aria-labelledby="sign-tab">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="sign-name" placeholder="name" >
+                <label for="floatingInput" id="label_sign_email">Имя*</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="sign-email" placeholder="name@example.com">
+                <label for="floatingInput" id="label_sign_email">Email/Номер телефона*</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="sign-password" placeholder="Password">
+                <label for="floatingPassword" id="label_sign_password">Пароль*</label>
+              </div>
+              <div class="form-floating ">
+                <input type="password" class="form-control" id="sign-password2" placeholder="Password">
+                <label for="floatingPassword" id="label_sign_password">Повторите пароль*</label>
+              </div>
+              <div class="text-start" id="pass_sign_warning">
+              </div>
+              <div class="row p-3">
+              <button type="button" onclick="registration()" class="btn btn-outline-success">Зарегистрироваться</button>
+            </div>
+            </div>
+          </div>
         </div>
+       
 
-        <div class="row py-2">
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Сообщить об ошибке</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+
           <div class="input-group flex-nowrap">
-            <input type="text" class="form-control" placeholder="Password" aria-label="Password"
+            <span class="input-group-text" id="addon-wrapping">@*</span>
+            <input type="text" class="form-control" placeholder="Email" aria-label="Email"
               aria-describedby="addon-wrapping">
           </div>
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-        <button type="button" class="btn btn-outline-success" onclick="autorization()">Отправить</button>
+
+          <div class="row py-2">
+            <div class="input-group">
+              <textarea class="form-control" placeholder="Опишите свою проблему"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-outline-success">Отправить</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Модальное окно -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Сообщить об ошибке</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-      </div>
-      <div class="modal-body">
-
-        <div class="input-group flex-nowrap">
-          <span class="input-group-text" id="addon-wrapping">@*</span>
-          <input type="text" class="form-control" placeholder="Email" aria-label="Email"
-            aria-describedby="addon-wrapping">
-        </div>
-
-        <div class="row py-2">
-        <div class="input-group">
-          <textarea class="form-control" placeholder="Опишите свою проблему"></textarea>
-        </div>
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-        <button type="button" class="btn btn-outline-success">Отправить</button>
-      </div>
-    </div>
-  </div>
-</div>
   <!-- Footer -->
   <footer class="text-center text-lg-start bg-light text-muted">
     <div class="container-fluid p-3">

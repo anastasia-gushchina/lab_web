@@ -1,11 +1,11 @@
-
 function page_loading() { }
 function autorization(login = "", password = "") {
     var xhr = new XMLHttpRequest();
-    if (login === "") login = document.getElementById("floatingInput").nodeValue;
-    if (password === "") password = document.getElementById("floatingPassword").nodeValue;
-
-    xhr.open('POST', '?login');
+    if (login === "")
+        login = document.getElementById("floatingInput").nodeValue;
+    if (password === "")
+        password = document.getElementById("floatingPassword").nodeValue;
+    xhr.open('POST', '/info?login');
     xhr.send(login + " " + password);
     xhr.onreadystatechange = func;
     function func() {
@@ -16,19 +16,17 @@ function autorization(login = "", password = "") {
                 if (val.role > 1) {
                     //admin
                 }
-                else
-                    if (val.role > 0) {
-                        //master
-                    }
-                    else {
-                        //client
-                    }
-
-            } else {
+                else if (val.role > 0) {
+                    //master
+                }
+                else {
+                    //client
+                }
+            }
+            else {
                 //wrong login or password
                 document.getElementById("pass_warning").textContent = "Неверный логин или пароль";
             }
-
         }
     }
 }
@@ -41,8 +39,7 @@ function registration() {
     if (login.match(/^[a-z][a-z0-9]*?([-_][a-z0-9]+){0,2}$/i) || login.match(/^\+7[0-9]{10}$/i)) {
         //ok
         document.getElementById("sign-email").className =
-            document.getElementById("sign-email").className.replace
-                (/(?:^|\s)is_invalid(?!\S)/g, '');
+            document.getElementById("sign-email").className.replace(/(?:^|\s)is_invalid(?!\S)/g, '');
         document.getElementById("label_sign_email").nodeValue = "Email/Номер телефона";
         document.getElementById("pass_sign_warning").nodeValue = "";
     }
@@ -56,8 +53,7 @@ function registration() {
     //checking correctness of password
     if (password.length >= 6) {
         document.getElementById("sign-password").className =
-            document.getElementById("sign-password").className.replace
-                (/(?:^|\s)is_invalid(?!\S)/g, '');
+            document.getElementById("sign-password").className.replace(/(?:^|\s)is_invalid(?!\S)/g, '');
         document.getElementById("label_sign_password").nodeValue = "Пароль";
     }
     else {
@@ -66,28 +62,16 @@ function registration() {
         document.getElementById("pass_sign_warning").nodeValue += "Пароль должен содержать минимум 6 символов";
         ok = false;
     }
-
     //check if this user already exist
-
-
-
-
     //send email
     if (ok) {
-
-
-
-    //open window for entering code
-
+        //open window for entering code
         //close modal window
-
     }
 }
-
 function registration_end() {
     //add to DB
-
     //autorization
     // autorization(login, password);
-
 }
+//# sourceMappingURL=myscript.js.map

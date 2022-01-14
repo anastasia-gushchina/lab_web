@@ -6,7 +6,6 @@
   "scripts": {
     "start": "tsc && node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-	"files": "tsc src/myscript.ts"
   },
   "repository": {
     "type": "git",
