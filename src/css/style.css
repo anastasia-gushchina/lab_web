@@ -31,7 +31,7 @@ a,a:visited, a:focus,a:hover{
 .navbar-collapse{
   text-align: right;
 }
-.nav-item{
+.navbar-nav .nav-item{
   font-size: 1.3em;
 }
 .dropdown-item:active{

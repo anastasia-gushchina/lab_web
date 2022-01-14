@@ -20,7 +20,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-
+  
+  <script src="myscript.js"></script>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -89,91 +90,91 @@
               myMap.geoObjects.add(objectManager);
               objectManager.objects.options.set('preset', 'islands#blueIcon');
               myMap.geoObjects.add(objectManager);
-              objectManager.add({
-                "type": "FeatureCollection",
-                "features": [
-                  {
-                    "type": "Feature",
-                    "id": 1,
-                    "geometry": {
-                      "type": "Point",
-                      "coordinates": [58.598564, 49.680509]
-                    },
-                    //"preset": 'islands#redDotIcon',
-                    "properties": {
-                      "iconCaption": 'Hair&Catalina'
-                    }
-                  }, {
-                    "type": "Feature",
-                    "id": 2,
-                    "geometry": {
-                      "type": "Point",
-                      "coordinates": [58.584180, 49.650290]
-                    },
-                    //"preset": 'islands#blueIcon',
-                    "properties": {
-                      "iconCaption": "тц. Арбат"
-                    }
-                  }
-                ]
-              });
-              /* 2. Обработка списка и меток */
-              //Клик по метке в карте
-              objectManager.objects.events.add('click', function (e) {
-                var objectId = e.get('objectId');
-                viewObject(objectId);
-              });
-              //Клик в списке
-              [].forEach.call(document.querySelectorAll('[data-objectId]'), function (el) {
-                el.addEventListener('click', function () {
-                  var objectId = el.getAttribute("data-objectId");
-                  viewObject(objectId);
-                });
-              });
-              // Что происходит при выборе метки или варианта из списка
-              function viewObject(objectId) {
-                // Удаляем со всего списка класс active затем добавляем к выбранному
-                for (var object of document.querySelectorAll('[data-objectId]')) {
-                  object.classList.remove('active');
-                }
-                document.querySelector('[data-objectId="' + objectId + '"]').classList.add('active');
-                // Выделяем все метки в синий, затем выбранную в красную
-                objectManager.objects.each(function (item) {
-                  objectManager.objects.setObjectOptions(item.id, {
-                    preset: 'islands#blueIcon'
-                  });
-                });
-                objectManager.objects.setObjectOptions(objectId, {
-                  preset: 'islands#redDotIcon'
-                });
-                // Центрирование по метке
-                myMap.setCenter(objectManager.objects.getById(objectId).geometry.coordinates, 15, {
-                  checkZoomRange: true
-                });
-              }
-              objectManager.objects.setObjectOptions(1, { preset: 'islands#redDotIcon' });
-              document.querySelector('[data-objectId=1"]').classList.add('active');
-            }
 
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", "/info?salons");
+              xhr.send();
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                  var features = [];
+                  var feature = "";
+                  var t = JSON.parse(xhr.responseText);
+                  var ul = document.getElementById("addresses");
+
+                  for (let i = 0; i < t.length; i++) {
+                    let s=`{"type":"Feature", "id": ${i + 1}, "geometry":{"type": "Point","coordinates": [${t[i].coordinate_x}, ${t[i].coordinate_y}]}, "properties": {"iconCaption": "${t[i].caption}"}}`;
+                    console.log(s);
+                    feature = JSON.parse(s);
+                    features.push(feature);
+
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(`${t[i].address}`));
+                    if (i == 0) li.setAttribute("class", "list-group-item active");
+                    else li.setAttribute("class", "list-group-item");
+                    li.setAttribute("data-objectId", `${i + 1}`);
+                    ul.appendChild(li);
+                  }
+                  objectManager.add({
+                    "type": "FeatureCollection",
+                    "features": features
+                  });
+
+
+                  /* 2. Обработка списка и меток */
+                  //Клик по метке в карте
+                  objectManager.objects.events.add('click', function (e) {
+                    var objectId = e.get('objectId');
+                    viewObject(objectId);
+                  });
+                  //Клик в списке
+                  [].forEach.call(document.querySelectorAll('[data-objectId]'), function (el) {
+                    el.addEventListener('click', function () {
+                      var objectId = el.getAttribute("data-objectId");
+                      viewObject(objectId);
+                    });
+                  });
+                  // Что происходит при выборе метки или варианта из списка
+                  function viewObject(objectId) {
+                    // Удаляем со всего списка класс active затем добавляем к выбранному
+                    for (var object of document.querySelectorAll('[data-objectId]')) {
+                      object.classList.remove('active');
+                    }
+                    document.querySelector('[data-objectId="' + objectId + '"]').classList.add('active');
+                    // Выделяем все метки в синий, затем выбранную в красную
+                    objectManager.objects.each(function (item) {
+                      objectManager.objects.setObjectOptions(item.id, {
+                        preset: 'islands#blueIcon'
+                      });
+                    });
+                    objectManager.objects.setObjectOptions(objectId, {
+                      preset: 'islands#redDotIcon'
+                    });
+                    // Центрирование по метке
+                    myMap.setCenter(objectManager.objects.getById(objectId).geometry.coordinates, 15, {
+                      checkZoomRange: true
+                    });
+                  }
+                  objectManager.objects.setObjectOptions(1, { preset: 'islands#redDotIcon' });
+                  document.querySelector('[data-objectId="1"]').classList.add('active');
+                }
+              }
+            }
           });</script>
       </div>
       <!-- 3. Добавляем список адресов с атрибутами "data-objectid"  -->
       <div class="col align-self-center">
-        <div class="list-group">
-
-          <li class="list-group-item active" data-objectid="1">г. Киров, ул. Молодой Гвардии, 26</li>
-          <li class="list-group-item" data-objectid="2">г. Киров, ул. Горького 55а</li>
+        <div id="addresses" class="list-group">
         </div>
-          <div class="align-self-center">
-            <div class="p-4 ">
-              <form method="GET" action="salon_choose">
-                <button class="btn btn-outline-success align-center" margin="5" type="submit" name="submit_salon">
-                  Выбрать этот салон >>
-                </button>
-              </form>
-            </div>
+        <div class="align-self-center">
+          <div class="p-4 ">
+            <form method="GET" action="salon_choose">
+              <button class="btn btn-outline-success align-center" margin="5" type="submit" name="submit_salon">
+                Выбрать этот салон >>
+              </button>
+            </form>
           </div>
-        
+        </div>
+
       </div>
     </div>
 
