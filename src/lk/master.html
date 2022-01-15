@@ -86,57 +86,64 @@
   <div class="container-fluid">
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <button class="nav-link active" id="enter-tab" data-bs-toggle="pill" data-bs-target="#settings-panel"
+        <button class="nav-link active" id="sign-tab" data-bs-toggle="pill" data-bs-target="#masters-panel" type="button"
+          role="tab" aria-controls="sign-pills" aria-selected="false">Записи</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link " id="enter-tab" data-bs-toggle="pill" data-bs-target="#settings-panel"
           type="button" role="tab" aria-controls="enter-pills" aria-selected="true">Данные профиля</button>
       </li>
-      <li class="text align-self-center px-3">Управление: </li>
+      
       <li class="nav-item">
         <button class="nav-link" id="sign-tab" data-bs-toggle="pill" data-bs-target="#services-panel" type="button"
-          role="tab" aria-controls="sign-pills" aria-selected="false">Услуги</button>
+          role="tab" aria-controls="sign-pills" aria-selected="false">Расписание</button>
       </li>
-      <li class="nav-item">
-        <button class="nav-link" id="sign-tab" data-bs-toggle="pill" data-bs-target="#masters-panel" type="button"
-          role="tab" aria-controls="sign-pills" aria-selected="false">Мастера</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" id="sign-tab" data-bs-toggle="pill" data-bs-target="#salons-panel" type="button"
-          role="tab" aria-controls="sign-pills" aria-selected="false">Салоны</button>
-      </li>
+      
 
     </ul>
     <div class="container-fluid col-lg-6 col-md-8">
       <div class="tab-content mt-3">
 
-        <div class="tab-pane fade show active" id="settings-panel" role="tabpanel" aria-labelledby="enter-tab">
+        <div class="tab-pane fade show " id="settings-panel" role="tabpanel" aria-labelledby="enter-tab">
+          <div class="row">
+            <div class="text col-4 p-3">Изменить имя:</div>
+            <div class="px-3">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="text col-4 p-3">Изменить данные входа:</div>
+          </div>
           <div class="form-floating mb-3">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput" id="label_email">Email/Номер телефона</label>
+            <label class="align-center" for=" floatingInput" id="label_email">Email/Номер телефона</label>
           </div>
 
           <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword" id="label_password">Пароль</label>
           </div>
-          <div class="text-start" id="pass_warning">
-          </div>
-          
-          <div class="row p-3">
-            <button type="button" class="btn btn-outline-success" onclick="save_settings()">Сохранить</button>
+          <div class="text-start pass_warning"></div>
+          <div class="text-start pass_warning">
+            <div class="row p-3">
+              <button type="button" class="btn btn-outline-success" onclick="save_settings()">Сохранить</button>
+            </div>
           </div>
         </div>
 
         <div class="tab-pane" id="services-panel" role="tabpanel" aria-labelledby="sign-tab">
 
+          <div class="text p-3">Настройка расписания работы</div>
           <div class="row p-3">
             <button type="button" onclick="save_services()" class="btn btn-outline-success">Сохранить</button>
           </div>
         </div>
 
-        <div class="tab-pane" id="masters-panel" role="tabpanel" aria-labelledby="sign-tab">
+        <div class="tab-pane active" id="masters-panel" role="tabpanel" aria-labelledby="sign-tab">
+          
+          <div class="text-center p-3">Отображение информации, кто был записан к мастеру</div>
          
-          <div class="row p-3">
-            <button type="button" onclick="save_masters()" class="btn btn-outline-success">Сохранить</button>
-          </div>
         </div>
 
         <div class="tab-pane" id="salons-panel" role="tabpanel" aria-labelledby="sign-tab">

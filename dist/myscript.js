@@ -1,14 +1,63 @@
 function page_loading() {
     if (localStorage.getItem("in-system") == "true") {
         //user is in system
+        var ul_nav = document.getElementById("ul-nav");
+        ul_nav.removeChild(document.getElementById("delete"));
+        var li_name = document.createElement("li");
+        li_name.setAttribute("class", "nav-item dropdown");
+        ul_nav.appendChild(li_name);
+        var a_name = document.createElement("a");
+        a_name.setAttribute("class", "nav-link dropdown-toggle");
+        a_name.setAttribute("id", "user_name");
+        a_name.setAttribute("href", "#");
+        a_name.setAttribute("data-bs-toggle", "dropdown");
+        a_name.setAttribute("aria-expanded", "false");
+        a_name.setAttribute("role", "button");
+        a_name.innerText = localStorage.getItem("name");
+        li_name.appendChild(a_name);
+        var ul_menu = document.createElement("ul");
+        ul_menu.setAttribute("class", "dropdown-menu");
+        li_name.appendChild(ul_menu);
+        var li1 = document.createElement("li");
+        var a1 = document.createElement("a");
+        li1.appendChild(a1);
+        a1.setAttribute("class", "dropdown-item");
+        a1.setAttribute("href", "#");
+        a1.innerText = "Настройки";
+        var li2 = document.createElement("li");
+        var hr = document.createElement("hr");
+        li2.appendChild(hr);
+        hr.setAttribute("class", "dropdown-divider");
+        var li3 = document.createElement("li");
+        var a3 = document.createElement("a");
+        li3.appendChild(a3);
+        a3.setAttribute("class", "dropdown-item");
+        a3.setAttribute("href", "#");
+        a3.setAttribute("onclick", "logout()");
+        a3.innerText = "Выйти";
+        ul_menu.appendChild(li1);
         if (localStorage.getItem("role") == "2") {
             //it is admin
+            var li4 = document.createElement("li");
+            var a4 = document.createElement("a");
+            li4.appendChild(a4);
+            a4.setAttribute("class", "dropdown-item");
+            a4.setAttribute("href", "#");
+            a4.innerText = "Управление";
+            ul_menu.appendChild(li4);
         }
         if (localStorage.getItem("role") == "1") {
             //it is master
+            var li5 = document.createElement("li");
+            var a5 = document.createElement("a");
+            li5.appendChild(a5);
+            a5.setAttribute("class", "dropdown-item");
+            a5.setAttribute("href", "#");
+            a5.innerText = "Расписание";
+            ul_menu.appendChild(li5);
         }
-    }
-    else {
+        ul_menu.appendChild(li2);
+        ul_menu.appendChild(li3);
     }
 }
 /*<li class="nav-item dropdown">
